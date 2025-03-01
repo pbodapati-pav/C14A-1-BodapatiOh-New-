@@ -21,7 +21,7 @@ public class BoardTestExp {
     public void testAdjacency() {
         TestBoardCell cell = board.getCell(0, 0);
         Set<TestBoardCell> testList = cell.getAdjList();
-        Assert.assertEquals(2, testList.size()); // Should be 2, not 1
+        Assert.assertEquals(2, testList.size()); 
         Assert.assertTrue(testList.contains(board.getCell(0, 1)));
         Assert.assertTrue(testList.contains(board.getCell(1, 0)));
     }
@@ -30,7 +30,7 @@ public class BoardTestExp {
     public void testTargetNormal() {
         board.calcTargets(board.getCell(0, 0), 3);
         Set<TestBoardCell> targets = board.getTargets();
-        Assert.assertEquals(6, targets.size()); // Updated expected value
+        Assert.assertEquals(6, targets.size()); 
     }
 
     @Test
@@ -39,8 +39,8 @@ public class BoardTestExp {
         board.calcTargets(board.getCell(0, 0), 2);
         Set<TestBoardCell> targets = board.getTargets();
 
-        Assert.assertEquals(1, targets.size()); // Room should be added, nothing beyond it
-        Assert.assertTrue(targets.contains(board.getCell(1, 1))); // Room should be reachable
+        Assert.assertEquals(1, targets.size()); 
+        Assert.assertTrue(targets.contains(board.getCell(1, 1))); 
     }
 
     @Test
@@ -49,8 +49,8 @@ public class BoardTestExp {
         board.calcTargets(board.getCell(0, 0), 2);
         Set<TestBoardCell> targets = board.getTargets();
 
-        Assert.assertEquals(2, targets.size()); // Only reachable cells, excluding occupied one
-        Assert.assertFalse(targets.contains(board.getCell(1, 0))); // Ensure occupied cell is NOT included
+        Assert.assertEquals(2, targets.size()); 
+        Assert.assertFalse(targets.contains(board.getCell(1, 0)));
     }
 
     @Test
@@ -60,8 +60,8 @@ public class BoardTestExp {
         board.calcTargets(board.getCell(2, 3), 3);
         Set<TestBoardCell> targets = board.getTargets();
 
-        Assert.assertEquals(3, targets.size()); // Adjusted expected value
-        Assert.assertFalse(targets.contains(board.getCell(2, 2))); // Occupied cell should not be in targets
-        Assert.assertTrue(targets.contains(board.getCell(1, 4))); // Room should be reachable but not passed
+        Assert.assertEquals(3, targets.size()); 
+        Assert.assertFalse(targets.contains(board.getCell(2, 2))); 
+        Assert.assertTrue(targets.contains(board.getCell(1, 4))); 
     }
 }
